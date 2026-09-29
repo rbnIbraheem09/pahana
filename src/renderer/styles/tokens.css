@@ -1,0 +1,166 @@
+/*
+ * Pahana design tokens.
+ * Neutrals are tinted toward the brand navy (OKLCH hue 258).
+ * Red / amber / green are the only loud colours and always carry meaning.
+ */
+
+:root {
+  --font-ui: 'Atkinson Hyperlegible Next Variable', 'Noto Sans Sinhala Variable', 'Noto Sans Tamil Variable', system-ui, sans-serif;
+  --font-display: 'Bricolage Grotesque Variable', 'Noto Sans Sinhala Variable', 'Noto Sans Tamil Variable', var(--font-ui);
+  --font-mono: 'Atkinson Hyperlegible Mono Variable', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  --text-2xs: 0.6875rem; /* 11 */
+  --text-xs: 0.75rem; /* 12 */
+  --text-sm: 0.8125rem; /* 13 */
+  --text-base: 0.9375rem; /* 15 */
+  --text-lg: 1.125rem; /* 18 */
+  --text-xl: 1.5rem; /* 24 */
+  --text-2xl: 2rem; /* 32 */
+  --text-3xl: 2.75rem; /* 44 */
+  --text-4xl: 3.75rem; /* 60 */
+
+  --space-2xs: 4px;
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+
+  --r-xs: 6px;
+  --r-sm: 9px;
+  --r-md: 12px;
+  --r-lg: 16px;
+  --r-xl: 22px;
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in: cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-1: 120ms;
+  --dur-2: 220ms;
+  --dur-3: 360ms;
+  --dur-4: 560ms;
+
+  --header: 52px;
+  --sidebar: 244px;
+  --inset: 8px;
+}
+
+/* ------------------------------------------------------------------ */
+/* Night (default)                                                     */
+/* ------------------------------------------------------------------ */
+:root,
+[data-theme='night'] {
+  color-scheme: dark;
+  --bg: oklch(0.165 0.021 258);
+  --sidebar-tint: oklch(0.165 0.021 258 / 0.72);
+  --panel: oklch(0.205 0.024 258);
+  --surface: oklch(0.24 0.027 258);
+  --surface-2: oklch(0.275 0.03 258);
+  --surface-3: oklch(0.31 0.032 258);
+  --sunken: oklch(0.18 0.022 258);
+  --line: oklch(0.42 0.03 258 / 0.42);
+  --line-soft: oklch(0.42 0.03 258 / 0.24);
+  --line-strong: oklch(0.5 0.03 258 / 0.6);
+  --text: oklch(0.965 0.007 258);
+  --text-2: oklch(0.82 0.016 258);
+  --text-3: oklch(0.66 0.022 258);
+  --text-4: oklch(0.52 0.024 258);
+
+  --accent: oklch(0.64 0.18 256);
+  --accent-hover: oklch(0.69 0.17 256);
+  --accent-press: oklch(0.58 0.19 257);
+  --accent-soft: oklch(0.64 0.18 256 / 0.16);
+  --accent-text: oklch(0.78 0.12 256);
+  --on-accent: oklch(0.99 0.004 258);
+
+  --red: oklch(0.65 0.21 25);
+  --red-soft: oklch(0.65 0.21 25 / 0.14);
+  --red-line: oklch(0.65 0.21 25 / 0.42);
+  --red-text: oklch(0.77 0.15 25);
+  --amber: oklch(0.8 0.155 75);
+  --amber-soft: oklch(0.8 0.155 75 / 0.13);
+  --amber-line: oklch(0.8 0.155 75 / 0.4);
+  --amber-text: oklch(0.85 0.13 80);
+  --green: oklch(0.73 0.16 158);
+  --green-soft: oklch(0.73 0.16 158 / 0.13);
+  --green-line: oklch(0.73 0.16 158 / 0.4);
+  --green-text: oklch(0.8 0.13 158);
+
+  --panel-edge: 0 0 0 1px oklch(0.5 0.03 258 / 0.22), 0 1px 0 0 oklch(1 0 0 / 0.04) inset;
+  --panel-shadow: 0 18px 50px -20px oklch(0.05 0.02 258 / 0.7);
+  --pop-shadow: 0 0 0 1px oklch(0.5 0.03 258 / 0.3), 0 16px 40px -8px oklch(0.05 0.02 258 / 0.7);
+  --focus: oklch(0.74 0.15 256);
+  --scroll-thumb: oklch(0.6 0.02 258 / 0.28);
+  --scroll-thumb-hover: oklch(0.7 0.02 258 / 0.45);
+}
+
+/* ------------------------------------------------------------------ */
+/* Daylight: for readability outdoors and in bright clinics            */
+/* ------------------------------------------------------------------ */
+[data-theme='day'] {
+  color-scheme: light;
+  --bg: oklch(0.945 0.009 258);
+  --sidebar-tint: oklch(0.955 0.008 258 / 0.66);
+  --panel: oklch(0.993 0.003 258);
+  --surface: oklch(0.972 0.005 258);
+  --surface-2: oklch(0.95 0.007 258);
+  --surface-3: oklch(0.925 0.009 258);
+  --sunken: oklch(0.965 0.006 258);
+  --line: oklch(0.55 0.03 258 / 0.2);
+  --line-soft: oklch(0.55 0.03 258 / 0.12);
+  --line-strong: oklch(0.45 0.03 258 / 0.32);
+  --text: oklch(0.2 0.03 258);
+  --text-2: oklch(0.36 0.03 258);
+  --text-3: oklch(0.5 0.028 258);
+  --text-4: oklch(0.62 0.022 258);
+
+  --accent: oklch(0.55 0.2 258);
+  --accent-hover: oklch(0.5 0.2 258);
+  --accent-press: oklch(0.46 0.19 258);
+  --accent-soft: oklch(0.55 0.2 258 / 0.1);
+  --accent-text: oklch(0.48 0.19 258);
+  --on-accent: oklch(0.995 0.003 258);
+
+  --red: oklch(0.57 0.21 26);
+  --red-soft: oklch(0.57 0.21 26 / 0.09);
+  --red-line: oklch(0.57 0.21 26 / 0.35);
+  --red-text: oklch(0.5 0.19 26);
+  --amber: oklch(0.72 0.16 68);
+  --amber-soft: oklch(0.72 0.16 68 / 0.13);
+  --amber-line: oklch(0.66 0.15 65 / 0.45);
+  --amber-text: oklch(0.52 0.12 60);
+  --green: oklch(0.6 0.15 158);
+  --green-soft: oklch(0.6 0.15 158 / 0.1);
+  --green-line: oklch(0.6 0.15 158 / 0.35);
+  --green-text: oklch(0.46 0.12 158);
+
+  --panel-edge: 0 0 0 1px oklch(0.4 0.03 258 / 0.1), 0 1px 2px 0 oklch(0.3 0.03 258 / 0.05);
+  --panel-shadow: 0 18px 50px -24px oklch(0.3 0.04 258 / 0.25);
+  --pop-shadow: 0 0 0 1px oklch(0.4 0.03 258 / 0.12), 0 16px 40px -10px oklch(0.3 0.04 258 / 0.28);
+  --focus: oklch(0.55 0.2 258);
+  --scroll-thumb: oklch(0.4 0.02 258 / 0.2);
+  --scroll-thumb-hover: oklch(0.4 0.02 258 / 0.36);
+}
+
+/* Band scoping: any element with data-band exposes --band* variables */
+[data-band='red'] {
+  --band: var(--red);
+  --band-soft: var(--red-soft);
+  --band-line: var(--red-line);
+  --band-text: var(--red-text);
+}
+[data-band='amber'] {
+  --band: var(--amber);
+  --band-soft: var(--amber-soft);
+  --band-line: var(--amber-line);
+  --band-text: var(--amber-text);
+}
+[data-band='green'] {
+  --band: var(--green);
+  --band-soft: var(--green-soft);
+  --band-line: var(--green-line);
+  --band-text: var(--green-text);
+}

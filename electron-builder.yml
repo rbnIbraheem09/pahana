@@ -1,0 +1,66 @@
+appId: lk.pahana.app
+productName: Pahana
+copyright: Pahana prototype. Not for clinical use.
+
+directories:
+  buildResources: build
+  output: dist
+
+files:
+  - out/**/*
+  - package.json
+  - '!**/*.map'
+
+asar: true
+# The UI ships its own English / Sinhala / Tamil strings; Chromium's UI locales aren't needed.
+electronLanguages: [en, en-GB, en-US]
+
+mac:
+  target:
+    - target: dmg
+      arch: [universal]
+  category: public.app-category.medical
+  icon: build/icon.png
+  # Ad-hoc signature: no Apple Developer account needed. Without any signature,
+  # Apple Silicon reports the app as "damaged"; ad-hoc gives the normal
+  # "unidentified developer" prompt instead (Open Anyway in System Settings).
+  identity: '-'
+  hardenedRuntime: false
+  gatekeeperAssess: false
+  notarize: false
+  darkModeSupport: true
+  minimumSystemVersion: '12.0'
+
+dmg:
+  title: Pahana ${version}
+  background: build/background.png
+  iconSize: 104
+  window:
+    width: 660
+    height: 400
+  contents:
+    - x: 180
+      y: 190
+      type: file
+    - x: 480
+      y: 190
+      type: link
+      path: /Applications
+  artifactName: Pahana-${version}-mac.${ext}
+
+win:
+  target:
+    - target: nsis
+      arch: [x64]
+  icon: build/icon.png
+  artifactName: Pahana-${version}-windows-setup.${ext}
+
+nsis:
+  oneClick: true
+  perMachine: false
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: Pahana
+  deleteAppDataOnUninstall: false
+
+publish: null
