@@ -14,9 +14,11 @@ import type {
  * Pahana triage rules. Deterministic, explainable, and NOT a diagnosis:
  * the output only decides the order in which a doctor reviews patients.
  *
- * Thresholds follow WHO HEARTS / ISH 2020 blood-pressure grades and ADA
- * glucose targets. They are prototype values and must be validated against
- * Sri Lanka Ministry of Health NCD guidelines by a clinician before real use.
+ * Blood-pressure grades follow Sri Lanka's National Guideline for Management of
+ * Hypertension for Primary Health Care (MoH 2021, = ISH 2020); glucose targets and
+ * hypoglycaemia levels follow the ADA Standards of Care. Symptom combinations,
+ * the glucose crisis cut-offs, adherence/trend cut-offs and the priority score are
+ * prototype design choices and must be reviewed by a clinician before real use.
  */
 export const RULES_VERSION = '0.3'
 
@@ -96,8 +98,11 @@ export function triage(r: ReadingInput, ctx: TriageContext = {}): TriageResult {
   if (bpSevere) flag({ code: 'bp_severe', band: 'red', params: bp })
   else if (bpGrade2) flag({ code: 'bp_grade2', band: 'amber', params: bp })
   else if (bpAbove) flag({ code: 'bp_above', band: 'amber', params: bp })
+  // Symptoms already explained by a BP or glucose reason aren't listed a second time.
+  const explained = new Set<SymptomKey>()
   if (bpLow) {
     const withSymptoms = symptoms.filter((s) => s === 'dizziness' || s === 'fainting')
+    withSymptoms.forEach((s) => explained.add(s))
     if (withSymptoms.length) flag({ code: 'bp_low_symptoms', band: 'red', params: { ...bp, symptoms: withSymptoms.join(',') } })
     else flag({ code: 'bp_low', band: 'amber', params: bp })
   }
@@ -106,19 +111,27 @@ export function triage(r: ReadingInput, ctx: TriageContext = {}): TriageResult {
   const gp = { glucose: g, type: fasting ? 'FBS' : 'RBS', target }
   if (hasGl) {
     if (glSevereLow) flag({ code: 'gl_low_severe', band: 'red', params: gp })
-    else if (glLow && hypo.length) flag({ code: 'gl_low_symptoms', band: 'red', params: { ...gp, symptoms: hypo.join(',') } })
+    else if (glLow && hypo.length) {
+      hypo.forEach((s) => explained.add(s))
+      flag({ code: 'gl_low_symptoms', band: 'red', params: { ...gp, symptoms: hypo.join(',') } })
+    }
     else if (glLow) flag({ code: 'gl_low', band: 'amber', params: gp })
     else if (glVeryHigh) flag({ code: 'gl_very_high', band: 'red', params: gp })
-    else if (glHigh250 && hyper.length) flag({ code: 'gl_high_symptoms', band: 'red', params: { ...gp, symptoms: hyper.join(',') } })
+    else if (glHigh250 && hyper.length) {
+      hyper.forEach((s) => explained.add(s))
+      flag({ code: 'gl_high_symptoms', band: 'red', params: { ...gp, symptoms: hyper.join(',') } })
+    }
     else if (glAbove) flag({ code: 'gl_above', band: 'amber', params: gp })
   }
 
   /* Symptoms -------------------------------------------------------- */
-  if (urgent.length) flag({ code: 'sym_urgent', band: 'red', params: { symptoms: urgent.join(',') } })
-  if (warning.length) {
+  const urgentLeft = urgent.filter((s) => !explained.has(s))
+  const warningLeft = warning.filter((s) => !explained.has(s))
+  if (urgentLeft.length) flag({ code: 'sym_urgent', band: 'red', params: { symptoms: urgentLeft.join(',') } })
+  if (warningLeft.length) {
     const context = bpSevere || bpGrade2 ? 'bp' : glHigh250 ? 'high_glucose' : glLow ? 'low_glucose' : null
-    if (context) flag({ code: 'sym_warning_combo', band: 'red', params: { symptoms: warning.join(','), context } })
-    else flag({ code: 'sym_warning', band: 'amber', params: { symptoms: warning.join(',') } })
+    if (context) flag({ code: 'sym_warning_combo', band: 'red', params: { symptoms: warningLeft.join(','), context } })
+    else flag({ code: 'sym_warning', band: 'amber', params: { symptoms: warningLeft.join(',') } })
   }
   if (watch.length) flag({ code: 'sym_watch', band: 'amber', params: { symptoms: watch.join(',') } })
 
@@ -196,21 +209,21 @@ export interface RuleRow {
 
 /** Human-readable rule table (shown in the portal's Rules page). */
 export const RULE_TABLE: RuleRow[] = [
-  { area: 'Blood pressure', band: 'red', rule: 'Systolic ≥ 180 or diastolic ≥ 110', basis: 'ISH 2020 grade 3 / WHO HEARTS severe' },
+  { area: 'Blood pressure', band: 'red', rule: 'Systolic ≥ 180 or diastolic ≥ 110', basis: 'Sri Lanka MoH 2021, Table 2.1: most urgent tier (≥180/110)' },
   { area: 'Blood pressure', band: 'red', rule: 'Systolic < 90 with dizziness or fainting', basis: 'Symptomatic hypotension' },
-  { area: 'Blood pressure', band: 'amber', rule: 'Systolic 160–179 or diastolic 100–109', basis: 'ISH 2020 grade 2' },
-  { area: 'Blood pressure', band: 'amber', rule: 'Systolic 140–159 or diastolic 90–99', basis: 'Above treatment target (140/90)' },
+  { area: 'Blood pressure', band: 'amber', rule: 'Systolic 160–179 or diastolic 100–109', basis: 'Sri Lanka MoH 2021, Table 1.1: grade 2 (= ISH 2020)' },
+  { area: 'Blood pressure', band: 'amber', rule: 'Systolic 140–159 or diastolic 90–99', basis: 'Sri Lanka MoH 2021, Table 1.1: grade 1 (hypertension ≥140/90)' },
   { area: 'Blood pressure', band: 'amber', rule: 'Systolic < 90', basis: 'Low blood pressure' },
-  { area: 'Glucose', band: 'red', rule: '≥ 300 mg/dL', basis: 'Severe hyperglycaemia' },
-  { area: 'Glucose', band: 'red', rule: '≥ 250 mg/dL with thirst, urination, vomiting or confusion', basis: 'Possible hyperglycaemic crisis' },
+  { area: 'Glucose', band: 'red', rule: '≥ 300 mg/dL', basis: 'Severe hyperglycaemia (prototype cut-off, needs clinical sign-off)' },
+  { area: 'Glucose', band: 'red', rule: '≥ 250 mg/dL with thirst, urination, vomiting or confusion', basis: 'Possible hyperglycaemic crisis (prototype cut-off, needs clinical sign-off)' },
   { area: 'Glucose', band: 'red', rule: '< 54 mg/dL, or < 70 with sweating, confusion, dizziness or fainting', basis: 'ADA level-2 / symptomatic hypoglycaemia' },
-  { area: 'Glucose', band: 'amber', rule: 'Fasting > 130 or random ≥ 180 mg/dL', basis: 'ADA glycaemic targets' },
+  { area: 'Glucose', band: 'amber', rule: 'Fasting > 130 or random ≥ 180 mg/dL', basis: 'ADA targets: fasting 80–130, peak after meals < 180' },
   { area: 'Glucose', band: 'amber', rule: '54–69 mg/dL', basis: 'ADA level-1 hypoglycaemia' },
-  { area: 'Symptoms', band: 'red', rule: 'Chest pain, breathlessness, one-sided weakness, confusion, fainting', basis: 'Red-flag symptoms' },
+  { area: 'Symptoms', band: 'red', rule: 'Chest pain, breathlessness, one-sided weakness, confusion, fainting', basis: 'Signs of acute organ damage (Sri Lanka MoH 2021, Table 2.2)' },
   { area: 'Symptoms', band: 'red', rule: 'Dizziness, severe headache, blurred vision, vomiting or sweating with grade-2+ BP or glucose ≥ 250 / < 70', basis: 'Symptomatic uncontrolled reading' },
   { area: 'Symptoms', band: 'amber', rule: 'Any warning symptom on its own; foot wound; ankle swelling', basis: 'Needs clinical review' },
-  { area: 'Medication', band: 'amber', rule: 'Missed ≥ 3 of the last 7 days, or any missed day with readings above target', basis: 'Adherence' },
-  { area: 'Trend', band: 'amber', rule: 'Systolic up ≥ 20 mmHg or glucose up ≥ 50 mg/dL vs the last 3 visits', basis: 'Worsening control' },
+  { area: 'Medication', band: 'amber', rule: 'Missed ≥ 3 of the last 7 days, or any missed day with readings above target', basis: 'Adherence (prototype cut-off)' },
+  { area: 'Trend', band: 'amber', rule: 'Systolic up ≥ 20 mmHg or glucose up ≥ 50 mg/dL vs the last 3 visits', basis: 'Worsening control (prototype cut-off)' },
   { area: 'All', band: 'green', rule: 'Everything within target and no warning symptoms', basis: 'Stable: can skip the trip' },
 ]
 

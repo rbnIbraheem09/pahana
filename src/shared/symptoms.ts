@@ -27,7 +27,7 @@ export const SYMPTOM_LIST: SymptomDef[] = [
   { key: 'sweating', severity: 'warning', label: { en: 'Sweating / shaking', si: 'දහඩිය / වෙව්ලීම', ta: 'வியர்வை / நடுக்கம்' } },
   { key: 'foot_wound', severity: 'watch', label: { en: 'Foot wound', si: 'පාදයේ තුවාලයක්', ta: 'காலில் புண்' } },
   { key: 'swelling', severity: 'watch', label: { en: 'Ankle swelling', si: 'වළලුකර ඉදිමීම', ta: 'கணுக்கால் வீக்கம்' } },
-  { key: 'thirst', severity: 'minor', label: { en: 'Very thirsty', si: 'අධික පිපාසය', ta: 'அதிக தாகம்' } },
+  { key: 'thirst', severity: 'minor', label: { en: 'Excessive thirst', si: 'අධික පිපාසය', ta: 'அதிக தாகம்' } },
   { key: 'urination', severity: 'minor', label: { en: 'Frequent urination', si: 'නිතර මුත්‍රා කිරීම', ta: 'அடிக்கடி சிறுநீர்' } },
   { key: 'tiredness', severity: 'minor', label: { en: 'Tiredness', si: 'මහන්සිය', ta: 'சோர்வு' } },
 ]

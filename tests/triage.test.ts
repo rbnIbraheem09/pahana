@@ -50,6 +50,16 @@ describe('symptoms and medication', () => {
   it('missing 1 day while controlled stays green', () => expect(band({ missedDays: 1 })).toBe('green'))
 })
 
+describe('explanations', () => {
+  const reasons = (over: Partial<ReadingInput>) => triage(r(over)).reasons.filter((x) => x.band !== 'green').map((x) => formatReason(x))
+  it('does not repeat a symptom already explained by low BP', () =>
+    expect(reasons({ sys: 85, dia: 55, symptoms: ['dizziness'] })).toEqual(['Low BP (85/55) with dizziness']))
+  it('does not repeat a symptom already explained by low glucose', () =>
+    expect(reasons({ glucose: 62, symptoms: ['sweating'] })).toEqual(['Low glucose (62) with sweating / shaking']))
+  it('reads naturally for high glucose with thirst', () =>
+    expect(reasons({ glucose: 260, glucoseType: 'random', symptoms: ['thirst'] })).toEqual(['Glucose 260 mg/dL with excessive thirst']))
+})
+
 describe('trend', () => {
   it('flags a 20 mmHg rise as amber', () => {
     const history = [

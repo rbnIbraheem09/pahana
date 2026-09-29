@@ -84,7 +84,9 @@ Keyboard (portal): `↑` `↓` move · `1`–`4` choose a decision · `⌘/Ctrl 
 | **Medication** | | Missed ≥3 of 7 days, or any missed dose while above target |
 | **Trend** | | Systolic up ≥20 mmHg or glucose up ≥50 vs recent visits |
 
-**Green** means everything is within target with no warning symptoms. Within a band, patients are ordered by how far past each threshold they are. The thresholds follow WHO HEARTS, ISH 2020 and ADA targets.
+**Green** means everything is within target with no warning symptoms. Within a band, patients are ordered by how far past each threshold they are.
+
+**Where the numbers come from.** The blood-pressure grades match Sri Lanka's [National Guideline for Management of Hypertension for Primary Health Care](https://www.ncd.health.gov.lk/images/pdf/Guildlines/National_Guideline_for_Management_of_Hypertension_for_primary_Health_care.pdf) (Ministry of Health, 2021; Tables 1.1 and 2.1, the same grades as ISH 2020). Glucose targets and low-sugar levels follow the [ADA Standards of Care](https://diabetesjournals.org/care/article/49/Supplement_1/S132/163927/6-Glycemic-Goals-Hypoglycemia-and-Hyperglycemic). The symptom combinations, the high-glucose crisis cut-offs (250/300), the missed-dose and trend cut-offs, and the priority score are prototype design choices, and they are the parts a clinician most needs to review.
 
 > ⚠️ **Prototype. Not for clinical use.** The thresholds must be checked against Sri Lanka Ministry of Health NCD guidelines and signed off by a clinician before any pilot. The Sinhala and Tamil text should be reviewed by native-speaking health workers.
 
