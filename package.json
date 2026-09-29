@@ -1,7 +1,7 @@
 {
   "name": "pahana",
   "productName": "Pahana",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Offline chronic-disease triage for rural health workers, with a doctor portal built in.",
   "main": "./out/main/index.js",
   "author": "Pahana team",

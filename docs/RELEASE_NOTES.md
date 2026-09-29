@@ -1,5 +1,7 @@
 **Pahana** is offline triage for chronic disease in rural Sri Lanka. Health workers record readings with no signal, Pahana flags who is getting worse, and the doctor sees who to review first.
 
+**New in 1.0.1:** clearer triage explanations (no repeated reasons), and the Rules page now cites Sri Lanka's national hypertension guideline (MoH 2021) and ADA targets, marking which cut-offs are prototype choices.
+
 ### Downloads
 
 | | File |
