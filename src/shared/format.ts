@@ -57,7 +57,7 @@ export function longDate(iso: string | Date, lang: Lang = 'en'): string {
 }
 
 export function timeOfDay(iso: string, lang: Lang = 'en'): string {
-  return new Intl.DateTimeFormat(LOCALE[lang], { hour: 'numeric', minute: '2-digit' }).format(new Date(iso))
+  return new Intl.DateTimeFormat(LOCALE[lang], { hour: '2-digit', minute: '2-digit' }).format(new Date(iso))
 }
 
 export function dateTime(iso: string): string {

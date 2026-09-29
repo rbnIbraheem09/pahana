@@ -58,6 +58,10 @@ export class FieldStore extends EventEmitter<FieldEvents> {
     return this.db.lastSyncAt
   }
 
+  get demo() {
+    return { pristine: !!this.db.pristine, seededAt: this.db.seededAt }
+  }
+
   flush(): void {
     this.file.flush()
   }
@@ -87,6 +91,7 @@ export class FieldStore extends EventEmitter<FieldEvents> {
       syncedAt: null,
     }
     this.db.patients.unshift(patient)
+    this.db.pristine = false
     this.persist()
     return patient
   }
@@ -110,6 +115,7 @@ export class FieldStore extends EventEmitter<FieldEvents> {
       syncedAt: null,
     }
     this.db.readings.push(reading)
+    this.db.pristine = false
     this.persist()
     return reading
   }
@@ -145,6 +151,7 @@ export class FieldStore extends EventEmitter<FieldEvents> {
     const fresh = decisions.filter((d) => !known.has(d.id))
     this.db.decisions.push(...fresh)
     this.db.lastSyncAt = serverTime
+    if (rSet.size || pSet.size || fresh.length) this.db.pristine = false
     this.persist()
     return fresh.length
   }

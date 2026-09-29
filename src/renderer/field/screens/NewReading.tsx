@@ -261,8 +261,8 @@ function PatientHeader({ view, onChange }: { view: PatientView; onChange: () => 
     >
       <Avatar name={patient.name} size={52} />
       <div className="min-w-0 flex-1">
-        <div className="flex items-baseline gap-3">
-          <h2 className="truncate text-[26px]">{patient.name}</h2>
+        <div className="flex flex-wrap items-baseline gap-x-3">
+          <h2 className="text-[26px] leading-tight">{patient.name}</h2>
           <span className="mono text-[14px] text-fg-3">#{patient.code}</span>
         </div>
         <div className="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-[13px] text-fg-3">

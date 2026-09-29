@@ -72,6 +72,10 @@ export class ClinicStore extends EventEmitter<ClinicEvents> {
     return this.db.devices
   }
 
+  get pristine() {
+    return !!this.db.pristine
+  }
+
   flush(): void {
     this.file.flush()
   }
@@ -223,6 +227,7 @@ export class ClinicStore extends EventEmitter<ClinicEvents> {
       bulk,
     }
     this.db.decisions.push(decision)
+    this.db.pristine = false
     push(this.decisionsBy, p.id, decision)
     this.summaryCache.delete(p.id)
     const summary = this.summary(p.id)!
@@ -274,6 +279,7 @@ export class ClinicStore extends EventEmitter<ClinicEvents> {
       if (!known.has(incoming.id)) {
         const r: Reading = { ...incoming, deviceId: device.id, syncedAt: now }
         this.db.readings.push(r)
+        this.db.pristine = false
         push(this.readingsBy, r.patientId, r)
         touched.add(r.patientId)
       }

@@ -272,6 +272,7 @@ export interface FieldState {
   lastSyncAt: string | null
   settings: FieldSettings
   seededAt: string
+  pristine?: boolean
 }
 
 export type SyncPhase = 'idle' | 'syncing' | 'done' | 'error'

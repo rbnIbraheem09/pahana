@@ -10,6 +10,7 @@ import { Kbd, Odometer } from '@ui/controls'
 import { BulkGreen } from '../components/BulkGreen'
 import { DecisionPanel } from '../components/Decision'
 import { Review } from '../components/Review'
+import { useMediaQuery } from '../hooks'
 import { queues, usePortal, useQueue } from '../store'
 
 const BAND_LABEL: Record<Band, string> = { red: 'Red', amber: 'Amber', green: 'Green' }
@@ -21,6 +22,9 @@ export function QueueWorkspace() {
   const bulkOpen = usePortal((s) => s.bulkOpen)
   const queue = useQueue(band)
   const [mobileDetail, setMobileDetail] = useState(false)
+  // Narrower screens show the decision under the review instead of in a third column.
+  // Only one DecisionPanel is ever mounted, so its keyboard shortcuts never fire twice.
+  const inlineDecision = useMediaQuery('(max-width: 1280px)')
   useQueueKeys(queue)
 
   // Keep a patient selected in the visible band.
@@ -47,12 +51,19 @@ export function QueueWorkspace() {
               <ChevronLeft size={15} /> Queue
             </button>
             {selectedId ? (
-              <Review patientId={selectedId} via="queue" />
+              <>
+                <Review patientId={selectedId} via="queue" />
+                {inlineDecision && (
+                  <div className="mx-auto max-w-[560px] border-t border-line-soft">
+                    <DecisionPanel patientId={selectedId} />
+                  </div>
+                )}
+              </>
             ) : (
               <EmptyQueue band={band} />
             )}
           </div>
-          <div className="col col-decision scroll">{selectedId && <DecisionPanel patientId={selectedId} />}</div>
+          {!inlineDecision && <div className="col col-decision scroll">{selectedId && <DecisionPanel patientId={selectedId} />}</div>}
         </>
       )}
     </div>
@@ -70,11 +81,11 @@ function BandTabs() {
       {(['red', 'amber', 'green'] as Band[]).map((b) => (
         <button key={b} role="tab" aria-selected={band === b} data-band={b} className="band-tab" onClick={() => setBand(b)}>
           <BandMark band={b} size={16} />
-          <span className="flex flex-col leading-none">
+          <span className="band-label flex flex-col leading-none">
             <span className="text-[12px] font-bold tracking-[0.08em] uppercase opacity-90">{BAND_LABEL[b]}</span>
             <span className="band-sub mt-1 text-[11.5px] font-semibold opacity-70">{BAND_SUB[b]}</span>
           </span>
-          <span className="flex-1" />
+          <span className="band-grow flex-1" />
           <span className="display text-[30px] leading-none font-[680] tracking-[-0.03em]">
             <Odometer value={q[b].length} />
           </span>

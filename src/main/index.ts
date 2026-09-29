@@ -36,6 +36,15 @@ if (!app.requestSingleInstanceLock()) {
   field.load(() => demo().field)
   seed = null
 
+  // An untouched demo older than a few hours is regenerated (same patients, fresh
+  // timestamps), so "today's round" is always today whenever the app is presented.
+  const { pristine, seededAt } = field.demo
+  if (pristine && clinic.pristine && Date.now() - Date.parse(seededAt) > 3 * 3600_000) {
+    const fresh = generateDemo()
+    clinic.replace(fresh.clinic)
+    field.replace({ ...fresh.field, settings: field.state().settings })
+  }
+
   const server = new ClinicServer(clinic, join(__dirname, '../renderer'), app.isPackaged ? undefined : process.env.ELECTRON_RENDERER_URL)
   const sync = new SyncClient(field, () => {
     const s = server.status()

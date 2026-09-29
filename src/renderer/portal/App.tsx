@@ -124,7 +124,7 @@ function Shell() {
         >
           {theme === 'day' ? <Moon size={16} /> : <Sun size={16} />}
         </button>
-        <div className="flex items-center gap-2.5">
+        <div className="topbar-user flex items-center gap-2.5">
           <div className="grid h-8 w-8 place-items-center rounded-full bg-surface-2 text-[12px] font-bold text-fg-2 shadow-[inset_0_0_0_1px_var(--line-soft)]">
             {initials(actor.replace(/^Dr\.?\s*/, ''))}
           </div>

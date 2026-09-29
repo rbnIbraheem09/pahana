@@ -30,6 +30,8 @@ export interface ClinicDB {
   audit: AuditEvent[]
   devices: Device[]
   seededAt: string
+  /** true until anything changes the demo (used to refresh stale demo data on launch) */
+  pristine?: boolean
 }
 
 export interface FieldDB {
@@ -44,6 +46,7 @@ export interface FieldDB {
   lastSyncAt: string | null
   settings: FieldSettings
   seededAt: string
+  pristine?: boolean
 }
 
 /* ------------------------------------------------------------------ */
@@ -493,6 +496,7 @@ export function generateDemo(nowMs = Date.now(), seed = 842): { clinic: ClinicDB
     audit,
     devices: devices.map((d) => (d.id === FIELD_DEVICE.id ? { ...d, lastSyncAt: iso(lastFieldSync) } : d)),
     seededAt,
+    pristine: true,
   }
 
   const fieldDb: FieldDB = {
@@ -514,6 +518,7 @@ export function generateDemo(nowMs = Date.now(), seed = 842): { clinic: ClinicDB
     lastSyncAt: iso(lastFieldSync),
     settings: { lang: 'en', theme: 'night', autoSync: true },
     seededAt,
+    pristine: true,
   }
 
   return { clinic: clinicDb, field: fieldDb }

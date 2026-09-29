@@ -69,7 +69,7 @@ export function Pair() {
         <h1 className="mt-7 text-[30px]">Pahana Clinic</h1>
         <p className="mt-2 max-w-[34ch] text-fg-3">Enter the pairing code shown in Pahana on the clinic computer.</p>
 
-        <motion.div animate={shake} className="mt-8 flex gap-2.5">
+        <motion.div animate={shake} className="mt-8 flex gap-2 sm:gap-2.5">
           {digits.map((d, i) => (
             <input
               key={i}
@@ -88,7 +88,7 @@ export function Pair() {
                 if (e.key === 'ArrowLeft' && i > 0) refs.current[i - 1]?.focus()
                 if (e.key === 'ArrowRight' && i < 5) refs.current[i + 1]?.focus()
               }}
-              className="mono h-16 w-12 rounded-[14px] border-0 bg-sunken text-center text-[28px] font-bold shadow-[inset_0_0_0_1px_var(--line)] transition-shadow duration-200 focus:bg-surface focus:shadow-[inset_0_0_0_1.5px_var(--accent),0_0_0_4px_var(--accent-soft)] sm:w-14"
+              className="mono h-14 w-11 rounded-[12px] sm:h-16 sm:w-14 sm:rounded-[14px] border-0 bg-sunken text-center text-[28px] font-bold shadow-[inset_0_0_0_1px_var(--line)] transition-shadow duration-200 focus:bg-surface focus:shadow-[inset_0_0_0_1.5px_var(--accent),0_0_0_4px_var(--accent-soft)] sm:w-14"
             />
           ))}
         </motion.div>

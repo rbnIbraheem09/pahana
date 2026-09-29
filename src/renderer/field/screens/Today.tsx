@@ -1,7 +1,7 @@
 import { motion } from 'motion/react'
 import { CloudOff, MessageSquareText, Plus, UploadCloud } from 'lucide-react'
 import { useMemo } from 'react'
-import { DAY_MS, startOfDay, timeOfDay } from '@shared/format'
+import { DAY_MS, relativeTime, startOfDay, timeOfDay } from '@shared/format'
 import { ACTION_LABEL } from '@shared/messages'
 import { BandChip, BandMark } from '@ui/Band'
 import { Ring } from '@ui/controls'
@@ -61,6 +61,15 @@ export function Today() {
             {t('nav.new')}
           </button>
         </div>
+
+        {!state.pristine && Date.now() - Date.parse(state.seededAt) > 12 * 3600_000 && (
+          <div className="mt-6 flex items-center gap-3 rounded-[14px] bg-surface px-4 py-3 text-[13px] text-fg-3 shadow-[inset_0_0_0_1px_var(--line-soft)]">
+            <span className="flex-1">{t('today.staleDemo', { when: relativeTime(state.seededAt) })}</span>
+            <button className="btn btn-secondary btn-sm" onClick={() => void window.pahana.app.resetDemo()}>
+              {t('today.refresh')}
+            </button>
+          </div>
+        )}
 
         {/* Stat line */}
         <div className="mt-8 flex flex-wrap items-stretch gap-x-10 gap-y-4">
