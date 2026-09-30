@@ -516,7 +516,7 @@ export function generateDemo(nowMs = Date.now(), seed = 842): { clinic: ClinicDB
     decisions: decisions.filter((d) => fieldPatientIds.has(d.patientId)),
     syncLog: [{ id: `sl-${rng.hex(8)}`, at: iso(lastFieldSync), ok: true, sent: 31, received: 6, ms: 184 }],
     lastSyncAt: iso(lastFieldSync),
-    settings: { lang: 'en', theme: 'night', autoSync: true },
+    settings: { lang: 'en', theme: 'day', autoSync: true },
     seededAt,
     pristine: true,
   }

@@ -1,10 +1,10 @@
 {
   "name": "pahana",
-  "productName": "Pahana",
-  "version": "1.0.1",
+  "productName": "Nexa Health",
+  "version": "2.0.0",
   "description": "Offline chronic-disease triage for rural health workers, with a doctor portal built in.",
   "main": "./out/main/index.js",
-  "author": "Pahana team",
+  "author": "Nexa Health team",
   "license": "MIT",
   "private": true,
   "homepage": "https://github.com/rbnIbraheem09/pahana",

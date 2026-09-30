@@ -63,8 +63,8 @@ export function Settings() {
             value={state.settings.theme}
             onChange={(theme) => void window.pahana.field.updateSettings({ theme })}
             options={[
-              { value: 'night', label: t('set.night') },
               { value: 'day', label: t('set.day') },
+              { value: 'night', label: t('set.night') },
             ]}
           />
         </Group>
@@ -126,7 +126,7 @@ export function Settings() {
 
         <Group title={t('set.about')}>
           <div className="text-[13.5px] text-fg-2">
-            Pahana {version} · Rules v{RULES_VERSION}
+            Nexa Health {version} · Rules v{RULES_VERSION}
           </div>
           <div className="mt-1 text-[13px] text-fg-4">{t('set.prototype')}</div>
         </Group>

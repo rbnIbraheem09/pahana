@@ -42,12 +42,12 @@ interface PortalState {
 
 let toastId = 0
 const toastTimers = new Map<number, ReturnType<typeof setTimeout>>()
-const THEME_KEY = 'pahana.portal.theme'
+const THEME_KEY = 'nexa.portal.theme'
 const readTheme = (): Theme => {
   try {
-    return localStorage.getItem(THEME_KEY) === 'day' ? 'day' : 'night'
+    return localStorage.getItem(THEME_KEY) === 'night' ? 'night' : 'day'
   } catch {
-    return 'night'
+    return 'day'
   }
 }
 

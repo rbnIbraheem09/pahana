@@ -65,11 +65,11 @@ html[data-platform='darwin'] body {
   display: grid;
   grid-template-columns: var(--sidebar) minmax(0, 1fr);
   height: 100vh;
-  background: var(--bg);
+  background: var(--chrome);
   transition: grid-template-columns var(--dur-3) var(--ease-out);
 }
 html[data-platform='darwin'] .app {
-  background: var(--sidebar-tint);
+  background: var(--chrome-tint);
 }
 .app[data-collapsed='true'] {
   grid-template-columns: 0px minmax(0, 1fr);
@@ -150,8 +150,12 @@ html[data-window-focused='false'] .sidebar {
   inset: 0;
   z-index: -1;
   border-radius: inherit;
-  background: var(--surface);
-  box-shadow: inset 0 0 0 1px var(--line-soft), 0 1px 2px oklch(0.1 0.03 258 / 0.18);
+  background: oklch(from var(--accent) l c h / 0.3);
+  box-shadow: inset 0 0 0 1px oklch(from var(--accent-hover) l c h / 0.42), 0 1px 2px oklch(0.08 0.05 264 / 0.3);
+}
+.nav-item[aria-current='page'] svg {
+  opacity: 1;
+  color: var(--accent-text);
 }
 
 /* Main panel -------------------------------------------------------- */

@@ -147,6 +147,6 @@ describe('demo data', () => {
   it('card IDs are unique and carry no personal data', () => {
     const ids = new Set(clinic.patients.map((p) => p.cardId))
     expect(ids.size).toBe(clinic.patients.length)
-    for (const p of clinic.patients) expect(p.cardId).toMatch(/^PH-[0-9A-Z]{4}-[0-9A-Z]{4}$/)
+    for (const p of clinic.patients) expect(p.cardId).toMatch(/^NH-[0-9A-Z]{4}-[0-9A-Z]{4}$/)
   })
 })

@@ -12,11 +12,11 @@ import { startDevControl } from './devctl'
 import { installMacMenu } from './menu'
 import { applyNativeTheme, createMainWindow } from './window'
 
-app.setName('Pahana')
+app.setName('Nexa Health')
 // Development runs keep their own data so the packaged app always starts from the clean demo.
-if (!app.isPackaged) app.setPath('userData', join(app.getPath('appData'), 'Pahana Dev'))
+if (!app.isPackaged) app.setPath('userData', join(app.getPath('appData'), 'Nexa Health Dev'))
 app.setAboutPanelOptions({
-  applicationName: 'Pahana',
+  applicationName: 'Nexa Health',
   applicationVersion: app.getVersion(),
   copyright: 'Offline chronic-disease triage. Prototype. Not for clinical use.',
 })

@@ -1,6 +1,6 @@
 /*
- * Pahana design tokens.
- * Neutrals are tinted toward the brand navy (OKLCH hue 258).
+ * Nexa Health design tokens.
+ * Neutrals are tinted toward the brand navy (OKLCH hue 258-264).
  * Red / amber / green are the only loud colours and always carry meaning.
  */
 
@@ -49,79 +49,31 @@
 }
 
 /* ------------------------------------------------------------------ */
-/* Night (default)                                                     */
+/* Daylight (default): white panels, navy ink, royal-blue actions       */
 /* ------------------------------------------------------------------ */
 :root,
-[data-theme='night'] {
-  color-scheme: dark;
-  --bg: oklch(0.165 0.021 258);
-  --sidebar-tint: oklch(0.165 0.021 258 / 0.72);
-  --panel: oklch(0.205 0.024 258);
-  --surface: oklch(0.24 0.027 258);
-  --surface-2: oklch(0.275 0.03 258);
-  --surface-3: oklch(0.31 0.032 258);
-  --sunken: oklch(0.18 0.022 258);
-  --line: oklch(0.42 0.03 258 / 0.42);
-  --line-soft: oklch(0.42 0.03 258 / 0.24);
-  --line-strong: oklch(0.5 0.03 258 / 0.6);
-  --text: oklch(0.965 0.007 258);
-  --text-2: oklch(0.82 0.016 258);
-  --text-3: oklch(0.66 0.022 258);
-  --text-4: oklch(0.52 0.024 258);
-
-  --accent: oklch(0.64 0.18 256);
-  --accent-hover: oklch(0.69 0.17 256);
-  --accent-press: oklch(0.58 0.19 257);
-  --accent-soft: oklch(0.64 0.18 256 / 0.16);
-  --accent-text: oklch(0.78 0.12 256);
-  --on-accent: oklch(0.99 0.004 258);
-
-  --red: oklch(0.65 0.21 25);
-  --red-soft: oklch(0.65 0.21 25 / 0.14);
-  --red-line: oklch(0.65 0.21 25 / 0.42);
-  --red-text: oklch(0.77 0.15 25);
-  --amber: oklch(0.8 0.155 75);
-  --amber-soft: oklch(0.8 0.155 75 / 0.13);
-  --amber-line: oklch(0.8 0.155 75 / 0.4);
-  --amber-text: oklch(0.85 0.13 80);
-  --green: oklch(0.73 0.16 158);
-  --green-soft: oklch(0.73 0.16 158 / 0.13);
-  --green-line: oklch(0.73 0.16 158 / 0.4);
-  --green-text: oklch(0.8 0.13 158);
-
-  --panel-edge: 0 0 0 1px oklch(0.5 0.03 258 / 0.22), 0 1px 0 0 oklch(1 0 0 / 0.04) inset;
-  --panel-shadow: 0 18px 50px -20px oklch(0.05 0.02 258 / 0.7);
-  --pop-shadow: 0 0 0 1px oklch(0.5 0.03 258 / 0.3), 0 16px 40px -8px oklch(0.05 0.02 258 / 0.7);
-  --focus: oklch(0.74 0.15 256);
-  --scroll-thumb: oklch(0.6 0.02 258 / 0.28);
-  --scroll-thumb-hover: oklch(0.7 0.02 258 / 0.45);
-}
-
-/* ------------------------------------------------------------------ */
-/* Daylight: for readability outdoors and in bright clinics            */
-/* ------------------------------------------------------------------ */
 [data-theme='day'] {
   color-scheme: light;
-  --bg: oklch(0.945 0.009 258);
-  --sidebar-tint: oklch(0.955 0.008 258 / 0.66);
-  --panel: oklch(0.993 0.003 258);
-  --surface: oklch(0.972 0.005 258);
-  --surface-2: oklch(0.95 0.007 258);
-  --surface-3: oklch(0.925 0.009 258);
-  --sunken: oklch(0.965 0.006 258);
-  --line: oklch(0.55 0.03 258 / 0.2);
-  --line-soft: oklch(0.55 0.03 258 / 0.12);
-  --line-strong: oklch(0.45 0.03 258 / 0.32);
-  --text: oklch(0.2 0.03 258);
-  --text-2: oklch(0.36 0.03 258);
-  --text-3: oklch(0.5 0.028 258);
-  --text-4: oklch(0.62 0.022 258);
+  --bg: oklch(0.955 0.011 258);
+  --sidebar-tint: oklch(0.955 0.011 258 / 0.66);
+  --panel: oklch(0.996 0.002 258);
+  --surface: oklch(0.974 0.007 258);
+  --surface-2: oklch(0.952 0.011 258);
+  --surface-3: oklch(0.925 0.014 258);
+  --sunken: oklch(0.966 0.008 258);
+  --line: oklch(0.5 0.05 262 / 0.19);
+  --line-soft: oklch(0.5 0.05 262 / 0.11);
+  --line-strong: oklch(0.42 0.06 262 / 0.32);
+  --text: oklch(0.24 0.06 264);
+  --text-2: oklch(0.37 0.05 262);
+  --text-3: oklch(0.5 0.04 260);
+  --text-4: oklch(0.62 0.03 258);
 
-  --accent: oklch(0.55 0.2 258);
-  --accent-hover: oklch(0.5 0.2 258);
-  --accent-press: oklch(0.46 0.19 258);
-  --accent-soft: oklch(0.55 0.2 258 / 0.1);
-  --accent-text: oklch(0.48 0.19 258);
+  --accent: oklch(0.51 0.21 264);
+  --accent-hover: oklch(0.46 0.21 265);
+  --accent-press: oklch(0.42 0.2 265);
+  --accent-soft: oklch(0.51 0.21 264 / 0.1);
+  --accent-text: oklch(0.46 0.2 265);
   --on-accent: oklch(0.995 0.003 258);
 
   --red: oklch(0.57 0.21 26);
@@ -137,12 +89,84 @@
   --green-line: oklch(0.6 0.15 158 / 0.35);
   --green-text: oklch(0.46 0.12 158);
 
-  --panel-edge: 0 0 0 1px oklch(0.4 0.03 258 / 0.1), 0 1px 2px 0 oklch(0.3 0.03 258 / 0.05);
-  --panel-shadow: 0 18px 50px -24px oklch(0.3 0.04 258 / 0.25);
-  --pop-shadow: 0 0 0 1px oklch(0.4 0.03 258 / 0.12), 0 16px 40px -10px oklch(0.3 0.04 258 / 0.28);
-  --focus: oklch(0.55 0.2 258);
-  --scroll-thumb: oklch(0.4 0.02 258 / 0.2);
-  --scroll-thumb-hover: oklch(0.4 0.02 258 / 0.36);
+  --panel-edge: 0 0 0 1px oklch(0.3 0.06 264 / 0.1), 0 1px 2px 0 oklch(0.3 0.06 264 / 0.06);
+  --panel-shadow: 0 18px 50px -24px oklch(0.25 0.08 264 / 0.3);
+  --pop-shadow: 0 0 0 1px oklch(0.35 0.06 264 / 0.12), 0 16px 40px -10px oklch(0.25 0.08 264 / 0.3);
+  --focus: oklch(0.55 0.2 262);
+  --scroll-thumb: oklch(0.4 0.04 262 / 0.2);
+  --scroll-thumb-hover: oklch(0.4 0.04 262 / 0.36);
+}
+
+/* ------------------------------------------------------------------ */
+/* Night: the deep Nexa navy. Also scoped onto brand chrome (.on-brand) */
+/* so the sidebar and portal top bar stay navy in both themes.          */
+/* ------------------------------------------------------------------ */
+[data-theme='night'],
+.on-brand {
+  color-scheme: dark;
+  --bg: oklch(0.19 0.05 263);
+  --sidebar-tint: oklch(0.19 0.05 263 / 0.9);
+  --panel: oklch(0.225 0.05 263);
+  --surface: oklch(0.262 0.052 263);
+  --surface-2: oklch(0.297 0.054 263);
+  --surface-3: oklch(0.332 0.055 263);
+  --sunken: oklch(0.205 0.05 263);
+  --line: oklch(0.52 0.06 262 / 0.36);
+  --line-soft: oklch(0.52 0.06 262 / 0.2);
+  --line-strong: oklch(0.6 0.06 262 / 0.52);
+  --text: oklch(0.97 0.008 250);
+  --text-2: oklch(0.84 0.025 252);
+  --text-3: oklch(0.69 0.035 256);
+  --text-4: oklch(0.55 0.04 258);
+
+  --accent: oklch(0.6 0.2 260);
+  --accent-hover: oklch(0.65 0.19 258);
+  --accent-press: oklch(0.55 0.2 262);
+  --accent-soft: oklch(0.6 0.2 260 / 0.2);
+  --accent-text: oklch(0.82 0.12 225);
+  --on-accent: oklch(0.99 0.004 258);
+
+  --red: oklch(0.65 0.21 25);
+  --red-soft: oklch(0.65 0.21 25 / 0.15);
+  --red-line: oklch(0.65 0.21 25 / 0.42);
+  --red-text: oklch(0.77 0.15 25);
+  --amber: oklch(0.8 0.155 75);
+  --amber-soft: oklch(0.8 0.155 75 / 0.13);
+  --amber-line: oklch(0.8 0.155 75 / 0.4);
+  --amber-text: oklch(0.85 0.13 80);
+  --green: oklch(0.73 0.16 158);
+  --green-soft: oklch(0.73 0.16 158 / 0.13);
+  --green-line: oklch(0.73 0.16 158 / 0.4);
+  --green-text: oklch(0.8 0.13 158);
+
+  --panel-edge: 0 0 0 1px oklch(0.55 0.06 262 / 0.22), 0 1px 0 0 oklch(1 0 0 / 0.05) inset;
+  --panel-shadow: 0 18px 50px -20px oklch(0.06 0.04 264 / 0.7);
+  --pop-shadow: 0 0 0 1px oklch(0.55 0.06 262 / 0.3), 0 16px 40px -8px oklch(0.06 0.04 264 / 0.7);
+  --focus: oklch(0.78 0.13 235);
+  --scroll-thumb: oklch(0.7 0.04 258 / 0.28);
+  --scroll-thumb-hover: oklch(0.78 0.04 258 / 0.45);
+}
+/* Descendants of brand chrome read their own (light) ink, not the page's. */
+.on-brand {
+  color: var(--text);
+}
+
+/* Window chrome behind the panels: brand navy in both themes. */
+:root,
+[data-theme='day'] {
+  --chrome: linear-gradient(180deg, oklch(0.25 0.085 264), oklch(0.2 0.065 265));
+  --chrome-tint: linear-gradient(180deg, oklch(0.25 0.085 264 / 0.97), oklch(0.2 0.065 265 / 0.97));
+}
+[data-theme='night'] {
+  --chrome: var(--bg);
+  --chrome-tint: var(--sidebar-tint);
+}
+
+/* Brand gradient (logo): cyan into royal blue */
+:root {
+  --brand-cyan: oklch(0.83 0.14 213);
+  --brand-blue: oklch(0.55 0.21 262);
+  --brand-navy: oklch(0.22 0.07 264);
 }
 
 /* Band scoping: any element with data-band exposes --band* variables */

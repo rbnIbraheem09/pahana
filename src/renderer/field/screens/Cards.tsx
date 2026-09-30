@@ -2,7 +2,7 @@ import { motion } from 'motion/react'
 import { Printer, RotateCw, Search, ShieldCheck } from 'lucide-react'
 import { useEffect, useMemo, useState } from 'react'
 import type { Patient } from '@shared/types'
-import { LampMark } from '@ui/Logo'
+import { NexaLettering, NexaMark } from '@ui/Logo'
 import { QR } from '@ui/QR'
 import { useT } from '../i18n'
 import { useField, useIndex } from '../store'
@@ -133,18 +133,18 @@ function CardFront({ patient, clinic }: { patient: Patient; clinic: string }) {
     <div
       className="relative flex h-full w-full flex-col justify-between overflow-hidden p-[6.5%] text-left"
       style={{
-        background: 'radial-gradient(120% 90% at 100% 0%, oklch(0.36 0.07 258), transparent 60%), linear-gradient(160deg, oklch(0.27 0.05 258), oklch(0.19 0.035 258))',
+        background: 'radial-gradient(110% 90% at 100% 0%, oklch(0.5 0.17 250 / 0.55), transparent 62%), linear-gradient(160deg, oklch(0.33 0.12 264), oklch(0.21 0.075 265))',
         color: 'oklch(0.97 0.01 258)',
       }}
     >
-      <svg className="pointer-events-none absolute -top-[18%] -right-[10%] h-[80%] opacity-[0.05]" viewBox="0 0 32 32" aria-hidden>
-        <path d="M4.2 15.6h23.3c.5 0 .86.46.73.94C27 21.4 22.3 25 16.4 25c-5.1 0-9.3-2.7-11-6.6l-2.3-1.4c-.62-.38-.35-1.4.38-1.4h.72Z" fill="currentColor" />
-      </svg>
-      <div className="flex items-center gap-[3%]">
-        <LampMark size={34} className="text-[oklch(0.93_0.03_80)]" />
+      <div className="pointer-events-none absolute -top-[16%] -right-[8%] h-[78%] opacity-[0.09]" aria-hidden>
+        <NexaMark size={400} className="h-full w-auto" />
+      </div>
+      <div className="relative flex items-center gap-[3%]">
+        <NexaMark size={34} />
         <div className="leading-none">
-          <div className="display text-[clamp(14px,3.6vw,20px)] font-[700] tracking-[-0.02em]">Pahana</div>
-          <div className="mt-1 text-[clamp(8px,1.8vw,10.5px)] font-bold tracking-[0.14em] uppercase opacity-70">Clinic card · සායන කාඩ්පත · கிளினிக் அட்டை</div>
+          <NexaLettering height={24} />
+          <div className="mt-1.5 text-[clamp(8px,1.8vw,10.5px)] font-bold tracking-[0.14em] uppercase opacity-70">Clinic card · සායන කාඩ්පත · கிளினிக் அட்டை</div>
         </div>
       </div>
       <div>
@@ -167,9 +167,9 @@ function CardFront({ patient, clinic }: { patient: Patient; clinic: string }) {
 
 function CardBack({ patient }: { patient: Patient }) {
   return (
-    <div className="flex h-full w-full items-center gap-[6%] p-[6.5%] text-left" style={{ background: 'oklch(0.975 0.005 258)', color: 'oklch(0.2 0.03 258)' }}>
+    <div className="flex h-full w-full items-center gap-[6%] p-[6.5%] text-left" style={{ background: 'oklch(0.985 0.005 258)', color: 'oklch(0.24 0.06 264)' }}>
       <div className="aspect-square h-full flex-none rounded-[8%] bg-white p-[2.5%] shadow-[0_0_0_1px_oklch(0.8_0.01_258)]">
-        <QR value={patient.cardId} size={400} className="h-full w-full" fg="oklch(0.18 0.03 258)" />
+        <QR value={patient.cardId} size={400} className="h-full w-full" fg="oklch(0.2 0.06 264)" />
       </div>
       <div className="flex h-full min-w-0 flex-col justify-between py-[2%]">
         <div>
@@ -177,8 +177,8 @@ function CardBack({ patient }: { patient: Patient }) {
           <div className="mono mt-1 text-[clamp(13px,3.2vw,19px)] font-bold tracking-[0.04em]">{patient.cardId}</div>
         </div>
         <div className="flex items-center gap-2">
-          <LampMark size={22} className="text-[oklch(0.25_0.04_258)]" />
-          <span className="display text-[clamp(11px,2.4vw,14px)] font-[700]">Pahana</span>
+          <NexaMark size={22} />
+          <NexaLettering height={17} />
         </div>
         <div className="text-[clamp(7px,1.55vw,9.5px)] leading-[1.5] opacity-65">
           {PRIVACY.en}

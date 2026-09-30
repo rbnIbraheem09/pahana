@@ -7,7 +7,7 @@ import { LANG_NAME } from '@shared/symptoms'
 import type { Band, DecisionAction, Lang, PatientSummary } from '@shared/types'
 import { Ring } from '@ui/controls'
 import { BasicPhone, Smartphone } from '@ui/Phone'
-import { LampMark } from '@ui/Logo'
+import { NexaMark } from '@ui/Logo'
 import { api } from '../api'
 import { queues, usePortal } from '../store'
 
@@ -132,7 +132,7 @@ function Panel({ s }: { s: PatientSummary }) {
     <div className="flex flex-col gap-6 px-6 pt-6 pb-10">
       <div>
         <div className="eyebrow">Decision</div>
-        <p className="mt-1 text-[13px] text-fg-3">The doctor decides. Pahana only orders the queue.</p>
+        <p className="mt-1 text-[13px] text-fg-3">The doctor decides. Nexa Health only orders the queue.</p>
       </div>
       <div className="flex flex-col gap-2" role="radiogroup" aria-label="Decision">
         {ACTIONS.map((a, i) => (
@@ -274,8 +274,8 @@ function PrintedSlip({ text, lang }: { text: string; lang: Lang }) {
       style={{ background: 'oklch(0.97 0.012 90)' }}
     >
       <div className="flex items-center gap-2 border-b border-dashed border-[oklch(0.7_0.02_90)] pb-3">
-        <LampMark size={22} className="text-[oklch(0.25_0.03_258)]" />
-        <span className="display text-[14px] font-[700]">Pahana · Clinic instruction</span>
+        <NexaMark size={22} />
+        <span className="display text-[14px] font-[700]">Nexa Health · Clinic instruction</span>
       </div>
       <p
         className="mt-3 text-[12.5px] leading-relaxed"

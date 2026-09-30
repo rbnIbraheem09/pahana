@@ -1,17 +1,17 @@
-**Pahana** is offline triage for chronic disease in rural Sri Lanka. Health workers record readings with no signal, Pahana flags who is getting worse, and the doctor sees who to review first.
+**Nexa Health** is offline triage for chronic disease in rural Sri Lanka. Health workers record readings with no signal, Nexa Health flags who is getting worse, and the doctor sees who to review first.
 
-**New in 1.0.1:** clearer triage explanations (no repeated reasons), and the Rules page now cites Sri Lanka's national hypertension guideline (MoH 2021) and ADA targets, marking which cut-offs are prototype choices.
+**New in 2.0.0: the Nexa Health rebrand.** New name, logo and app icon; a navy, royal-blue and cyan palette across the field app, the clinic portal, clinic cards and SMS; and the bright Daylight theme is now the default (Night is one click away in the sidebar or Settings). Clinic card IDs now start with **NH-**. Everything else works exactly as in 1.0.1.
 
 ### Downloads
 
 | | File |
 |---|---|
-| **macOS** (Apple Silicon and Intel) | `Pahana-…-mac.dmg` |
-| **Windows 10 / 11** | `Pahana-…-windows-setup.exe` |
+| **macOS** (Apple Silicon and Intel) | `Nexa-Health-…-mac.dmg` |
+| **Windows 10 / 11** | `Nexa-Health-…-windows-setup.exe` |
 
 ### First launch
 
-**macOS:** drag Pahana into Applications and open it. macOS will say it can't verify the developer (the app isn't notarised). Go to **System Settings → Privacy & Security → Open Anyway**. Or run `xattr -cr /Applications/Pahana.app` in Terminal once.
+**macOS:** drag Nexa Health into Applications and open it. macOS will say it can't verify the developer (the app isn't notarised). Go to **System Settings → Privacy & Security → Open Anyway**. Or run `xattr -cr "/Applications/Nexa Health.app"` in Terminal once.
 
 **Windows:** if **Windows protected your PC** appears, click **More info → Run anyway**.
 

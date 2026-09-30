@@ -35,16 +35,16 @@ const CARD_ALPHABET = '0123456789ABCDEFGHJKMNPQRSTVWXYZ'
 
 export function cardIdFrom(rand: () => number): string {
   const chunk = () => Array.from({ length: 4 }, () => CARD_ALPHABET[Math.floor(rand() * 32)]).join('')
-  return `PH-${chunk()}-${chunk()}`
+  return `NH-${chunk()}-${chunk()}`
 }
 
 export function isCardId(s: string): boolean {
-  return /^PH-[0-9A-HJKMNP-TV-Z]{4}-[0-9A-HJKMNP-TV-Z]{4}$/.test(s.trim().toUpperCase())
+  return /^NH-[0-9A-HJKMNP-TV-Z]{4}-[0-9A-HJKMNP-TV-Z]{4}$/.test(s.trim().toUpperCase())
 }
 
 export function normaliseCardId(s: string): string {
   const raw = s.trim().toUpperCase().replace(/[^0-9A-Z]/g, '')
-  const body = raw.startsWith('PH') ? raw.slice(2) : raw
+  const body = raw.startsWith('NH') ? raw.slice(2) : raw
   if (body.length !== 8) return s.trim().toUpperCase()
-  return `PH-${body.slice(0, 4)}-${body.slice(4)}`
+  return `NH-${body.slice(0, 4)}-${body.slice(4)}`
 }

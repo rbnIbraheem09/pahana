@@ -56,7 +56,7 @@ jobs:
 
       - uses: actions/upload-artifact@v7
         with:
-          name: pahana-${{ matrix.name }}
+          name: nexa-health-${{ matrix.name }}
           path: |
             dist/*.dmg
             dist/*.exe
@@ -82,5 +82,5 @@ jobs:
         run: |
           ls -la artifacts
           gh release create "$GITHUB_REF_NAME" artifacts/* \
-            --title "Pahana $GITHUB_REF_NAME" \
+            --title "Nexa Health $GITHUB_REF_NAME" \
             --notes-file docs/RELEASE_NOTES.md

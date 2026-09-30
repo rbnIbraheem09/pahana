@@ -1,8 +1,8 @@
 <div align="center">
-  <img src="build/icon.png" width="112" alt="Pahana" />
-  <h1>Pahana</h1>
+  <img src="build/icon.png" width="112" alt="Nexa Health" />
+  <h1>Nexa Health</h1>
   <p><b>Offline triage for chronic disease in rural Sri Lanka.</b><br/>
-  Health workers record readings with no signal. Pahana flags who is getting worse, and the doctor sees who to review first.</p>
+  Health workers record readings with no signal. Nexa Health flags who is getting worse, and the doctor sees who to review first.</p>
   <p>
     <a href="../../releases/latest"><b>Download for macOS or Windows →</b></a>
   </p>
@@ -10,7 +10,7 @@
 
 ---
 
-**Pahana** (පහන, "lamp") is named for the clay oil lamp, and for Florence Nightingale, *the Lady with the Lamp*, who walked the wards at night checking on who needed care most. It starts with **diabetes and hypertension on the estates** and is built to extend to other conditions.
+**Nexa Health** gives rural clinics one connected view of their chronic-disease patients. It starts with **diabetes and hypertension on the estates** and is built to extend to other conditions.
 
 | Health worker app (works offline) | Doctor's clinic portal (web) |
 |---|---|
@@ -20,7 +20,7 @@
 
 A diabetic estate worker loses a day's wage and pays for transport to hear "your readings are fine", while a patient whose sugar is dangerously high waits in the same queue, or never comes. Rural areas have **1 medical officer per 1,850 people** (Colombo: 1 per 420). Everyone in the queue is treated the same, records are scattered, and nobody watches patients between visits.
 
-## How Pahana works
+## How Nexa Health works
 
 1. **Record.** The health worker enters BP, glucose, symptoms and missed doses. It works with **no signal** and saves on the device.
 2. **Sync.** When signal returns, records upload in signed batches (HMAC-SHA256 per device).
@@ -32,7 +32,7 @@ A diabetic estate worker loses a day's wage and pays for transport to hear "your
 |---|---|
 | ![Decision recorded](docs/screenshots/portal-decision.png) | ![Bulk green](docs/screenshots/portal-bulk.png) |
 
-Also included: **QR clinic cards** (the QR holds a random ID only), an **access log** of every record opened, **consent** at registration, a **Daylight theme** for outdoor use, and the full **rulebook** inside the app.
+Also included: **QR clinic cards** (the QR holds a random ID only), an **access log** of every record opened, **consent** at registration, a bright **Daylight theme** by default (easy to read outdoors) with a **Night theme** for low light, and the full **rulebook** inside the app.
 
 ---
 
@@ -42,18 +42,18 @@ Download from the [**latest release**](../../releases/latest).
 
 ### macOS (Apple Silicon and Intel)
 
-1. Open `Pahana-x.y.z-mac.dmg` and drag **Pahana** into **Applications**.
+1. Open `Nexa-Health-x.y.z-mac.dmg` and drag **Nexa Health** into **Applications**.
 2. The first time you open it, macOS will say it can't verify the developer, because the app isn't notarised with a paid Apple account.
-   - Open **System Settings → Privacy & Security**, scroll down, and click **Open Anyway** next to Pahana, **or**
-   - in Terminal, run `xattr -cr /Applications/Pahana.app` and then open it normally.
+   - Open **System Settings → Privacy & Security**, scroll down, and click **Open Anyway** next to Nexa Health, **or**
+   - in Terminal, run `xattr -cr "/Applications/Nexa Health.app"` and then open it normally.
 
 You only need to do this once.
 
 ### Windows 10 / 11
 
-1. Run `Pahana-x.y.z-windows-setup.exe`.
+1. Run `Nexa-Health-x.y.z-windows-setup.exe`.
 2. If **Windows protected your PC** appears, click **More info → Run anyway** (the installer isn't code-signed).
-3. Pahana installs for your user and opens. It's in the Start menu from then on.
+3. Nexa Health installs for your user and opens. It's in the Start menu from then on.
 
 ---
 
@@ -61,7 +61,7 @@ You only need to do this once.
 
 The app ships with realistic demo data: 478 patients across the Hatton, Dickoya and Maskeliya estates, and a health worker (S. Mahendran, Dickoya) whose laptop holds **today's round: 48 readings that haven't synced yet**. Put the app and a browser side by side.
 
-1. **Offline.** Open Pahana. The top bar says **No signal** and **48 to sync**. Today's round shows Patient **#0842, Muthulakshmi Ramasamy**, flagged **RED**.
+1. **Offline.** Open Nexa Health. The top bar says **No signal** and **48 to sync**. Today's round shows Patient **#0842, Muthulakshmi Ramasamy**, flagged **RED**.
 2. **Record.** Click **New reading**, pick #0842, type `168` `102`, tick **Dizziness** and **2** missed days. The priority card turns red as you type and says why: *dizziness with BP above 160/100, missed medication…* Press **Save offline** and watch the record drop into the outbox.
 3. **Turn on the clinic.** Go to **Clinic portal → Start clinic portal → Open in browser**. The doctor's portal opens already paired. The queue shows **Red 5 · Amber 27 · Green 386** (the other health workers' patients).
 4. **Signal returns.** Click **No signal** to switch it on. The outbox syncs in a blink, and in the browser the queue updates live to **Red 8 · Amber 31 · Green 427**. The new patients slide into place marked **NEW**.
@@ -95,7 +95,7 @@ Keyboard (portal): `↑` `↓` move · `1`–`4` choose a decision · `⌘/Ctrl 
 ## How it's built
 
 ```
-Pahana.app
+Nexa Health.app
 ├─ Field UI (React)  ◄─IPC─►  Main process (Node)
 │                              ├─ field store: JSON on the device, works offline
 │                              ├─ sync client ──HTTP + HMAC──┐

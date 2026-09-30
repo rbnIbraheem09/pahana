@@ -13,7 +13,7 @@ export function Rules() {
       <div className="mx-auto max-w-[900px] px-8 pt-8 pb-14">
         <h2 className="text-[28px]">Triage rules · v{RULES_VERSION}</h2>
         <p className="mt-3 max-w-[66ch] text-fg-2">
-          Pahana uses fixed, published thresholds. It is not AI and it never diagnoses. The rules only decide the order in which a doctor reviews patients, and every flag
+          Nexa Health uses fixed, published thresholds. It is not AI and it never diagnoses. The rules only decide the order in which a doctor reviews patients, and every flag
           in the queue names the exact rule that fired.
         </p>
         <div className="mt-5 flex items-start gap-3 rounded-[14px] bg-amber-soft px-4 py-3 text-[13.5px] text-fg-2 shadow-[inset_0_0_0_1px_var(--amber-line)]">

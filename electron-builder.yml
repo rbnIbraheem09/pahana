@@ -1,6 +1,6 @@
 appId: lk.pahana.app
-productName: Pahana
-copyright: Pahana prototype. Not for clinical use.
+productName: Nexa Health
+copyright: Nexa Health prototype. Not for clinical use.
 
 directories:
   buildResources: build
@@ -32,7 +32,7 @@ mac:
   minimumSystemVersion: '12.0'
 
 dmg:
-  title: Pahana ${version}
+  title: Nexa Health ${version}
   background: build/background.png
   iconSize: 104
   window:
@@ -46,21 +46,21 @@ dmg:
       y: 190
       type: link
       path: /Applications
-  artifactName: Pahana-${version}-mac.${ext}
+  artifactName: Nexa-Health-${version}-mac.${ext}
 
 win:
   target:
     - target: nsis
       arch: [x64]
   icon: build/icon.png
-  artifactName: Pahana-${version}-windows-setup.${ext}
+  artifactName: Nexa-Health-${version}-windows-setup.${ext}
 
 nsis:
   oneClick: true
   perMachine: false
   createDesktopShortcut: true
   createStartMenuShortcut: true
-  shortcutName: Pahana
+  shortcutName: Nexa Health
   deleteAppDataOnUninstall: false
 
 publish: null

@@ -27,7 +27,7 @@ export function Scan() {
     if (busy.current) return
     const id = normaliseCardId(raw)
     if (!isCardId(id)) {
-      setError('That doesn’t look like a Pahana card ID (PH-XXXX-XXXX).')
+      setError('That doesn’t look like a Nexa Health card ID (NH-XXXX-XXXX).')
       return
     }
     busy.current = true
@@ -138,7 +138,7 @@ export function Scan() {
         <div className="pt-2">
           <h2 className="text-[28px]">Scan a clinic card</h2>
           <p className="mt-3 text-fg-2">
-            Hold the patient’s Pahana card up to the camera. The record opens straight away. For the demo you can also show the card from the Pahana app’s
+            Hold the patient’s Nexa Health card up to the camera. The record opens straight away. For the demo you can also show the card from the Nexa Health app’s
             Clinic cards screen.
           </p>
           <p className="mt-4 flex items-start gap-2 text-[13px] text-fg-3">
@@ -159,7 +159,7 @@ export function Scan() {
             >
               <input
                 className="input mono h-11 text-[15px] tracking-[0.06em] uppercase"
-                placeholder="PH-XXXX-XXXX"
+                placeholder="NH-XXXX-XXXX"
                 value={manual}
                 onChange={(e) => setManual(e.target.value.toUpperCase().slice(0, 12))}
               />

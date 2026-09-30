@@ -11,6 +11,7 @@ html[data-app='portal'] body {
 }
 
 .portal {
+  background: var(--chrome);
   display: grid;
   grid-template-rows: auto minmax(0, 1fr);
   grid-template-columns: minmax(0, 1fr);
@@ -52,8 +53,11 @@ html[data-app='portal'] body {
   inset: 0;
   z-index: -1;
   border-radius: inherit;
-  background: var(--surface);
-  box-shadow: inset 0 0 0 1px var(--line-soft);
+  background: oklch(from var(--accent) l c h / 0.3);
+  box-shadow: inset 0 0 0 1px oklch(from var(--accent-hover) l c h / 0.42);
+}
+.tab[aria-current='page'] svg {
+  color: var(--accent-text);
 }
 
 .stage {
@@ -203,7 +207,7 @@ html[data-app='portal'] body {
   color: oklch(0.16 0.03 258);
   box-shadow: 0 8px 24px -10px var(--band);
 }
-[data-theme='day'] .band-tab[aria-selected='true'][data-band='red'] {
+:root:not([data-theme='night']) .band-tab[aria-selected='true'][data-band='red'] {
   color: oklch(0.99 0.004 25);
 }
 .band-tab[aria-selected='true'] svg path,

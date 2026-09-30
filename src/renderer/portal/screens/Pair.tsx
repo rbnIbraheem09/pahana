@@ -1,10 +1,10 @@
 import { motion, useAnimationControls } from 'motion/react'
 import { ShieldCheck } from 'lucide-react'
 import { useRef, useState } from 'react'
-import { LampMark } from '@ui/Logo'
+import { NexaLettering, NexaMark } from '@ui/Logo'
 import { pair } from '../store'
 
-/** Pairing: the six-digit code shown in the Pahana app on the clinic computer. */
+/** Pairing: the six-digit code shown in the Nexa Health app on the clinic computer. */
 export function Pair() {
   const [digits, setDigits] = useState<string[]>(Array(6).fill(''))
   const [error, setError] = useState<string | null>(null)
@@ -62,12 +62,14 @@ export function Pair() {
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ delay: 0.1, type: 'spring', duration: 0.8, bounce: 0 }}
-          className="grid h-20 w-20 place-items-center rounded-[26px] bg-surface shadow-[inset_0_0_0_1px_var(--line-soft),0_20px_50px_-20px_oklch(0.8_0.14_85/0.35)]"
+          className="grid h-20 w-20 place-items-center rounded-[26px] bg-surface shadow-[inset_0_0_0_1px_var(--line-soft),0_20px_50px_-20px_oklch(0.6_0.18_240/0.4)]"
         >
-          <LampMark size={48} className="text-fg" />
+          <NexaMark size={48} />
         </motion.div>
-        <h1 className="mt-7 text-[30px]">Pahana Clinic</h1>
-        <p className="mt-2 max-w-[34ch] text-fg-3">Enter the pairing code shown in Pahana on the clinic computer.</p>
+        <h1 className="mt-7 flex justify-center">
+          <NexaLettering height={40} className="text-fg" />
+        </h1>
+        <p className="mt-4 max-w-[34ch] text-fg-3">Enter the pairing code shown in Nexa Health on the clinic computer.</p>
 
         <motion.div animate={shake} className="mt-8 flex gap-2 sm:gap-2.5">
           {digits.map((d, i) => (

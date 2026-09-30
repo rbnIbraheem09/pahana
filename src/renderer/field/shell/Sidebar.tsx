@@ -32,13 +32,13 @@ export function Sidebar() {
   const route = useField((s) => s.route)
   const navigate = useField((s) => s.navigate)
   const device = useField((s) => s.state?.device)
-  const theme = useField((s) => s.state?.settings.theme ?? 'night')
+  const theme = useField((s) => s.state?.settings.theme ?? 'day')
   const portalLive = useField((s) => s.portal.running)
   const idx = useIndex()
   const mod = window.pahana.platform === 'darwin' ? '⌘' : 'Ctrl '
 
   return (
-    <aside className="sidebar">
+    <aside className="sidebar on-brand">
       <div className="sidebar-inner">
         <div className="sidebar-top drag">
           <button

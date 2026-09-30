@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from 'motion/react'
 import { useEffect, useState } from 'react'
 import type { Lang } from '@shared/types'
-import { LampMark } from './Logo'
+import { NexaMark } from './Logo'
 
 const LANG_FONT: Record<Lang, string> = {
   en: 'var(--font-ui)',
@@ -46,10 +46,10 @@ export function Smartphone({ text, lang, time = 'now', scale = 1 }: { text: stri
             <div className="absolute top-[9px] left-1/2 h-[20px] w-[74px] -translate-x-1/2 rounded-full bg-black" />
             {/* thread header */}
             <div className="flex flex-none flex-col items-center gap-1 border-b border-[oklch(0.9_0.005_258)] pt-2 pb-2.5">
-              <div className="grid h-9 w-9 place-items-center rounded-full bg-[oklch(0.25_0.04_258)] text-[oklch(0.92_0.02_80)]">
-                <LampMark size={22} />
+              <div className="grid h-9 w-9 place-items-center rounded-full bg-[oklch(0.22_0.07_264)]">
+                <NexaMark size={22} />
               </div>
-              <div className="text-[11px] font-semibold tracking-wide">PAHANA</div>
+              <div className="text-[11px] font-semibold tracking-wide">NEXA HEALTH</div>
             </div>
             {/* thread */}
             <div className="flex flex-1 flex-col justify-end gap-2 px-3 pb-3">
@@ -170,7 +170,7 @@ export function BasicPhone({ text, lang, time = 'now', scale = 1 }: { text: stri
                     className="mt-1.5"
                   >
                     <div className="mb-1 border-b pb-0.5 text-[10px] font-bold" style={{ borderColor: ink }}>
-                      From: PAHANA
+                      From: NEXA HEALTH
                     </div>
                     <div className="text-[10.5px] leading-[1.35]" style={{ fontFamily: LANG_FONT[lang] }}>
                       {text}

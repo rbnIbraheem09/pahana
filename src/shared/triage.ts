@@ -11,7 +11,7 @@ import type {
 } from './types'
 
 /**
- * Pahana triage rules. Deterministic, explainable, and NOT a diagnosis:
+ * Nexa Health triage rules. Deterministic, explainable, and NOT a diagnosis:
  * the output only decides the order in which a doctor reviews patients.
  *
  * Blood-pressure grades follow Sri Lanka's National Guideline for Management of

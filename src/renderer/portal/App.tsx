@@ -3,7 +3,7 @@ import { Activity, BookOpenCheck, CheckCircle2, CloudDownload, Info, ListOrdered
 import { lazy, Suspense, useEffect } from 'react'
 import { initials } from '@shared/format'
 import { springSnappy } from '@ui/controls'
-import { LampMark } from '@ui/Logo'
+import { NexaMark, Wordmark } from '@ui/Logo'
 import { Pair } from './screens/Pair'
 import { QueueWorkspace } from './screens/Queue'
 import { PatientsTable } from './screens/PatientsTable'
@@ -27,7 +27,7 @@ export function App() {
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme
-    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'day' ? '#edf0f6' : '#0b111c')
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'day' ? '#13275e' : '#0e1a3b')
   }, [theme])
 
   return (
@@ -36,14 +36,14 @@ export function App() {
         <motion.div key="loading" exit={{ opacity: 0 }} className="grid h-dvh place-items-center px-6">
           <div className="flex flex-col items-center text-center">
             <motion.div animate={{ opacity: [0.4, 1, 0.4] }} transition={{ duration: 1.6, repeat: Infinity }}>
-              <LampMark size={44} className="text-fg" />
+              <NexaMark size={48} />
             </motion.div>
             <AnimatePresence>
               {phase === 'unreachable' && (
                 <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="mt-6">
                   <h1 className="text-[22px]">Waiting for the clinic server</h1>
                   <p className="mt-2 max-w-[42ch] text-[14px] text-fg-3">
-                    Switch on <b className="text-fg-2">Clinic portal</b> in Pahana on the clinic computer. This page reconnects by itself.
+                    Switch on <b className="text-fg-2">Clinic portal</b> in Nexa Health on the clinic computer. This page reconnects by itself.
                   </p>
                 </motion.div>
               )}
@@ -73,13 +73,9 @@ function Shell() {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.4 }}
     >
-      <header className="topbar">
-        <div className="flex items-center gap-2.5">
-          <LampMark size={28} className="text-fg" />
-          <div className="leading-none">
-            <div className="display text-[17px] font-[680] tracking-[-0.02em]">Pahana Clinic</div>
-            <div className="mt-1 text-[11.5px] font-semibold text-fg-3">{clinic?.name}</div>
-          </div>
+      <header className="topbar on-brand">
+        <div className="min-w-0 flex-none">
+          <Wordmark size="sm" sub={clinic?.name ?? 'Clinic'} />
         </div>
 
         <nav className="topbar-tabs isolate ml-4 flex items-center gap-1" aria-label="Sections">

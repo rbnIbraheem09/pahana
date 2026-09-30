@@ -27,7 +27,7 @@ const SCREENS: Record<Route, () => React.JSX.Element> = {
 export function App() {
   const route = useField((s) => s.route)
   const collapsed = useField((s) => s.sidebarCollapsed)
-  const theme = useField((s) => s.state?.settings.theme ?? 'night')
+  const theme = useField((s) => s.state?.settings.theme ?? 'day')
   const lang = useField((s) => s.state?.settings.lang ?? 'en')
   const fullscreen = useField((s) => s.win.fullscreen)
   const focused = useField((s) => s.win.focused)

@@ -187,7 +187,7 @@ export class ClinicServer extends EventEmitter<ServerEvents> {
     const path = url.pathname
     const method = req.method ?? 'GET'
 
-    if (path === '/api/health') return json(res, 200, { ok: true, name: 'Pahana Clinic', rules: RULES_VERSION })
+    if (path === '/api/health') return json(res, 200, { ok: true, name: 'Nexa Health Clinic', rules: RULES_VERSION })
 
     // Device sync is authenticated with the device's HMAC key, not a browser session.
     if (path === '/api/sync' && method === 'POST') {
@@ -206,7 +206,7 @@ export class ClinicServer extends EventEmitter<ServerEvents> {
       const body = JSON.parse((await readBody(req)).toString('utf8') || '{}') as { code?: string }
       if (!this.pairCode || String(body.code ?? '').replace(/\D/g, '') !== this.pairCode) {
         await delay(350)
-        throw new HttpError(401, 'That code doesn’t match. Check the code shown in Pahana on the clinic computer.')
+        throw new HttpError(401, 'That code doesn’t match. Check the code shown in Nexa Health on the clinic computer.')
       }
       const s = this.createSession()
       setSessionCookie(res, s.token)
@@ -233,7 +233,7 @@ export class ClinicServer extends EventEmitter<ServerEvents> {
     const cardMatch = path.match(/^\/api\/cards\/([\w-]+)$/)
     if (cardMatch && method === 'GET') {
       const id = normaliseCardId(decodeURIComponent(cardMatch[1]))
-      if (!isCardId(id)) throw new HttpError(400, 'That doesn’t look like a Pahana card ID')
+      if (!isCardId(id)) throw new HttpError(400, 'That doesn’t look like a Nexa Health card ID')
       const patientId = this.store.lookupCard(id)
       if (!patientId) throw new HttpError(404, 'No patient with that card')
       return json(res, 200, { patientId })

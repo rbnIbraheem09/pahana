@@ -12,8 +12,8 @@ const isMac = process.platform === 'darwin'
 export const HEADER_HEIGHT = 48
 
 /** Windows: the caption buttons sit on the content panel, so they share its exact colour. */
-const PANEL_BG: Record<Theme, string> = { night: '#101722', day: '#FBFDFF' }
-const SYMBOL: Record<Theme, string> = { night: '#C5CEDD', day: '#243044' }
+const PANEL_BG: Record<Theme, string> = { night: '#0f1a36', day: '#FDFEFF' }
+const SYMBOL: Record<Theme, string> = { night: '#C9D4EA', day: '#15285A' }
 
 interface WindowState {
   x?: number
@@ -77,7 +77,7 @@ export function createMainWindow(theme: Theme, preload: string): BrowserWindow {
     minWidth: 1040,
     minHeight: 680,
     show: false,
-    title: 'Pahana',
+    title: 'Nexa Health',
     // No title bar strip: the app's own top row is the draggable surface.
     titleBarStyle: 'hidden',
     ...(isMac

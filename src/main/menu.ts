@@ -64,7 +64,7 @@ export function installMacMenu(getWindow: () => BrowserWindow | null): void {
         { label: 'Clinic Cards', accelerator: 'Cmd+5', click: send('go:cards') },
         { label: 'Clinic Portal', accelerator: 'Cmd+6', click: send('go:portal') },
         { type: 'separator' },
-        { label: 'Daylight Theme', accelerator: 'Cmd+Shift+L', click: send('toggle-theme') },
+        { label: 'Toggle Light / Dark', accelerator: 'Cmd+Shift+L', click: send('toggle-theme') },
         { type: 'separator' },
         { role: 'togglefullscreen' },
         ...(app.isPackaged ? [] : ([{ type: 'separator' }, { role: 'reload' }, { role: 'toggleDevTools' }] as const)),
